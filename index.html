@@ -8,62 +8,23 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('.stark').click(function(){
-            for(i=1;i<=444;i++){
-                $.get("https://anapioficeandfire.com/api/houses/"+i, function(data) {
-                    console.log(data)
-                    z = data.name
-                    if(z=="House Stark of Winterfell"){
-                        $('.info').html("<h3>Name: "+data.name+"</h3><h3>Region: "+data.region+"</h3><h3 id='words'>Words: "+data.words+"</h3><h3>Titles: "+data.titles+"</h3>")
-                    }
+        $('.houses').click(function(){
+                var casa = $(this).attr('casa')
+                $.get("https://anapioficeandfire.com/api/houses/?name="+casa, function(data) {
+                        $('.info').html("<h3>Name: "+data[0].name+"</h3><h3>Region: "+data[0].region+"</h3><h3 id='words'>Words: "
+                        +data[0].words+"</h3><h3>Titles: "+data[0].titles+"</h3>")
                 }, "json");
-    }
         })
-        $('.targaryen').click(function(){
-            for(i=1;i<=444;i++){
-                $.get("https://anapioficeandfire.com/api/houses/"+i, function(data) {
-                    console.log(data)
-                    z = data.name
-                    if(z=="House Targaryen of King's Landing"){
-                        $('.info').html("<h3>Name: "+data.name+"</h3><h3>Region: "+data.region+"</h3><h3 id='words'>Words: "+data.words+"</h3><h3>Titles: "+data.titles+"</h3>")
-                    }
-                }, "json");
-    }
-        })
-        $('.lannister').click(function(){
-            for(i=1;i<=444;i++){
-                $.get("https://anapioficeandfire.com/api/houses/"+i, function(data) {
-                    console.log(data)
-                    z = data.name
-                    if(z=="House Lannister of Casterly Rock"){
-                        $('.info').html("<h3>Name: "+data.name+"</h3><h3>Region: "+data.region+"</h3><h3 id='words'>Words: "+data.words+"</h3><h3>Titles: "+data.titles+"</h3>")
-                    }
-                }, "json");
-    }
-        })
-        $('.baratheon').click(function(){
-            for(i=1;i<=444;i++){
-                $.get("https://anapioficeandfire.com/api/houses/"+i, function(data) {
-                    console.log(data)
-                    z = data.name
-                    if(z=="House Baratheon of Storm's End"){
-                        $('.info').html("<h3>Name: "+data.name+"</h3><h3>Region: "+data.region+"</h3><h3 id='words'>Words: "+data.words+"</h3><h3>Titles: "+data.titles+"</h3>")
-                    }
-                }, "json");
-    }
-        })
-
     });
-    
     </script>
 </head>
 <body>
     <img src="logo.png" alt="logo" id="logo">
     <div id="container">
-        <div class="houses stark"></div>
-        <div class="houses targaryen"></div>
-        <div class="houses lannister"></div>
-        <div class="houses baratheon"></div>
+        <div class="houses stark" casa="House Stark of Winterfell"></div>
+        <div class="houses targaryen" casa="House Targaryen of King's Landing"></div>
+        <div class="houses lannister" casa="House Lannister of Casterly Rock"></div>
+        <div class="houses baratheon" casa="House Baratheon of Storm's End"></div>
         <div class="bottom">
             <h1>House details</h1>
             <div class="info"></div>
